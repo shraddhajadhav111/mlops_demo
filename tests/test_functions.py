@@ -7,7 +7,7 @@ import mlflow
 class TestModel(unittest.TestCase):
     
     def setUp(self):
-        self.df = load_data(r"C:\Users\shjadhav\OneDrive - Malomatia\Desktop\ml_cicd\data\train.csv")
+        self.df = load_data("https://github.com/shraddhajadhav111/mlops_demo/blob/main/data/train.csv")
         self.X_train, self.X_test, self.y_train, self.y_test = select_and_preprocess_data(self.df)
 
     def test_train_model(self):
