@@ -3,6 +3,9 @@ from src.data_fetcher import load_data
 from src.data_preprocessor import select_and_preprocess_data
 from src.model import train_model, predict, evaluation, rmse_cv
 import mlflow
+import warnings
+warnings.filterwarnings("ignore", category=FutureWarning)
+
 
 class TestModel(unittest.TestCase):
     
