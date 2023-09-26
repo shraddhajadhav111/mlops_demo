@@ -14,6 +14,7 @@ class TestModel(unittest.TestCase):
         self.X_train, self.X_test, self.y_train, self.y_test = select_and_preprocess_data(self.df)
 
     def test_train_model(self):
+        mlflow.set_experiment("Test_Train_Model_Experiment")
         with mlflow.start_run(run_name="Test Train Model"):
             model = train_model(self.X_train, self.y_train)
             self.assertIsNotNone(model)
@@ -21,6 +22,8 @@ class TestModel(unittest.TestCase):
             mlflow.xgboost.log_model(model, "Test Train Model")
 
     def test_predictions(self):
+        mlflow.set_experiment("Test_Train_Model_Experiment")
+
         with mlflow.start_run(run_name="Test Predictions"):
             model = train_model(self.X_train, self.y_train)
             predictions = predict(model, self.X_test)
@@ -28,6 +31,7 @@ class TestModel(unittest.TestCase):
             mlflow.log_metric("Number of Predictions", len(predictions))
 
     def test_evaluation(self):
+        mlflow.set_experiment("Test_Train_Model_Experiment")
         with mlflow.start_run(run_name="Test Evaluation"):
             model = train_model(self.X_train, self.y_train)
             predictions = predict(model, self.X_test)
@@ -39,6 +43,7 @@ class TestModel(unittest.TestCase):
             mlflow.log_metric("R2 Score", r_squared)
 
     def test_rmse_cv(self):
+        mlflow.set_experiment("Test_Train_Model_Experiment")
         with mlflow.start_run(run_name="Test RMSE CV"):
             model = train_model(self.X_train, self.y_train)
             rmse = rmse_cv(model, self.X_train, self.y_train)
