@@ -39,6 +39,8 @@ jobs:
 
 
     # Optional deployment step
-    - name: Deploy
-      run: |
-        ./deploy.sh  # or whatever your deployment script/command is
+    - name: Grant execute permission for deploy.sh
+      run: chmod +x deploy.sh
+
+    - name: Run deploy.sh
+      run: ./deploy.sh
