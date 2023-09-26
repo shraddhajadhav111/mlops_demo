@@ -39,6 +39,6 @@ jobs:
 
 
     # Optional deployment step
-    #- name: Deploy
-    #  run: |
-    #    ./deploy.sh  # or whatever your deployment script/command is
+    - name: Deploy
+      run: |
+        ./deploy.sh  # or whatever your deployment script/command is
