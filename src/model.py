@@ -53,5 +53,8 @@ def main(X_train, y_train, X_test, y_test):
         
         # Log model to mlflow
         mlflow.xgboost.log_model(model, "model")
+        # Register model to mlflow
+        model_uri = "runs:/{run_id}/model".format(run_id=mlflow.active_run().info.run_id)
+        registered_model_name = "XGBRegressorModel"
         
     return mae, mse, rmse, r_squared, rmse_cross_val
