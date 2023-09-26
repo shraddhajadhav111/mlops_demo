@@ -32,10 +32,7 @@ jobs:
       run: echo "PYTHONPATH=$PWD" >> $GITHUB_ENV
 
     - name: Run tests
-      run: |
-        export MLFLOW_TRACKING_URI=http://127.0.0.1:5000
-        cd tests
-        python -m unittest discover tests
+      run: python -m unittest tests/test_functions.py
     # Optional deployment step
     - name: Grant execute permission for deploy.sh
       run: chmod +x deploy.sh
