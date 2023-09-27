@@ -28,6 +28,7 @@ class TestModel(unittest.TestCase):
         with mlflow.start_run(run_name="Test Predictions"):
             model = train_model(self.X_train, self.y_train)
             predictions = predict(model, self.X_test)
+            print("predictions")
             self.assertEqual(len(predictions), len(self.y_test))
             mlflow.log_metric("Number of Predictions", len(predictions))
 
@@ -42,6 +43,7 @@ class TestModel(unittest.TestCase):
             mlflow.log_metric("MSE", mse)
             mlflow.log_metric("RMSE", rmse)
             mlflow.log_metric("R2 Score", r_squared)
+            print(mae,mse,rmse,r_squared)
 
     def test_rmse_cv(self):
         mlflow.set_experiment("Test_Train_Model_Experiment")
